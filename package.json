@@ -25,6 +25,10 @@
   "keywords": [
     "fft",
     "fourier",
+    "psd",
+    "spectrometry",
+    "spectral-analysis",
+    "dsp",
     "windowing",
     "hann",
     "hamming",
