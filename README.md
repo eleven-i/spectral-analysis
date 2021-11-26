@@ -1,6 +1,6 @@
 # Spectral Analysis
 
-TypeScript library spectral analysis such as PSD and FFT
+TypeScript library spectral analysis such as PSD and FFT. For calculating FFT, this package uses [kissfft-js](https://www.npmjs.com/package/kissfft-js). This package extends it to make it easier to use and combines it with windowing functions.
 
 This package contains three public functions `calculateFFT`, `welch` and `spectrogram`.
 

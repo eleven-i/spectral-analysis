@@ -57,6 +57,11 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
   integrity sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==
 
+"@types/kissfft-js@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@types/kissfft-js/-/kissfft-js-0.1.1.tgz#4ea5c8f01f04a2b5e42ee03f5164df5b3e18f7dc"
+  integrity sha512-VASN9XooppuiTTWO3s0Aua4/jDaKzlwGnQKKEuxh8TulmLdgwj6KoT3ZwhgPJC4sL3K2MoX9pBJ/KMLvEnIkfQ==
+
 "@typescript-eslint/eslint-plugin@^5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.4.0.tgz#05e711a2e7b68342661fde61bccbd1531c19521a"

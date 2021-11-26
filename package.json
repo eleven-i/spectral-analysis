@@ -1,6 +1,6 @@
 {
   "name": "spectral-analysis",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TypeScript library spectral analysis such as PSD and FFT",
   "main": "dist/main",
   "repository": "git@github.com:eleven-i/spectral-analysis.git",
@@ -15,6 +15,7 @@
     "kissfft-js": "^0.1.8"
   },
   "devDependencies": {
+    "@types/kissfft-js": "^0.1.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.3.0",

@@ -47,7 +47,7 @@ const findWindowFunction = (name: WindowFunctionName) => {
   }
 };
 
-const calculateMagnitude = (complexData: Float32Array) => {
+const calculateMagnitude = (complexData: number[]) => {
   const newData = [];
   for (let i = 0; i < complexData.length; i = i + 2) {
     newData.push(
