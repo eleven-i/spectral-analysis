@@ -25,6 +25,8 @@
   },
   "keywords": [
     "fft",
+    "fast-fourier-transform",
+    "digital-signal-processing",
     "fourier",
     "psd",
     "spectrometry",
