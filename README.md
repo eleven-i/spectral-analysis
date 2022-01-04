@@ -10,6 +10,20 @@ The windowing functions available are those found in [fft-windowing-ts](https://
 
 ---
 
+## How to use
+
+```zsh
+yarn add spectral-analysis
+```
+
+```ts
+import { calculateFFT, welch, spectrogram } from 'spectral-analysis'
+```
+
+Below are descriptions and type definitions for these functions
+
+---
+
 ## FFT
 
 Raw FFT of data. 50% window overlap is standard.
