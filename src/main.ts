@@ -174,6 +174,7 @@ const welch = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName = "hann"
 ) => {
+  windowSize = roundWindowSize(windowSize, overlap);
   const psdWindows = calculatePSDWindows(
     inputData,
     sampleRate,
@@ -181,7 +182,6 @@ const welch = (
     overlap,
     windowingFunction
   );
-  windowSize = roundWindowSize(windowSize, overlap);
   //Combine windows
   const psd = psdWindows.reduce(
     (total, current) => current.map((item, i) => total[i] + item),
