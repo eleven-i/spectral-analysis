@@ -206,7 +206,7 @@ const roundOverlapAndWindowSize = (
   //Rounds down the window size to an even number
   const roundedWindowSize =
     overlapFactor * 2 * Math.floor(windowSize / (overlapFactor * 2));
-  const roundedOverlap = 1 / (1 - overlapFactor);
+  const roundedOverlap = 1 - 1 / overlapFactor;
   return [roundedOverlap, roundedWindowSize, overlapFactor];
 };
 
