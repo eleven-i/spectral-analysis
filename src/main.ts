@@ -84,10 +84,10 @@ const calculateWindows = (
   windowingFunction: WindowFunctionName
 ) => {
   const wf = findWindowFunction(windowingFunction);
-  const overlapFactor = 1 / (1 - overlap);
-  //Rounds down the window size to an even number
-  windowSize = Math.floor(
-    overlapFactor * Math.floor(windowSize / overlapFactor)
+  let overlapFactor = 1 / (1 - overlap);
+  [overlap, windowSize, overlapFactor] = roundOverlapAndWindowSize(
+    overlap,
+    windowSize
   );
   const dataLength = inputData.length;
   if (windowSize > dataLength) {
@@ -114,7 +114,7 @@ const calculatePSDWindows = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName
 ) => {
-  windowSize = roundWindowSize(windowSize, overlap);
+  [windowSize, overlap] = roundOverlapAndWindowSize(windowSize, overlap);
   const windows = calculateWindows(
     inputData,
     windowSize,
@@ -146,7 +146,7 @@ const calculateFFT = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName = "hann"
 ) => {
-  windowSize = roundWindowSize(windowSize, overlap);
+  [windowSize, overlap] = roundOverlapAndWindowSize(windowSize, overlap);
   const windows = calculateWindows(
     inputData,
     windowSize,
@@ -176,7 +176,7 @@ const welch = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName = "hann"
 ) => {
-  windowSize = roundWindowSize(windowSize, overlap);
+  [windowSize, overlap] = roundOverlapAndWindowSize(windowSize, overlap);
   const psdWindows = calculatePSDWindows(
     inputData,
     sampleRate,
@@ -198,10 +198,16 @@ const welch = (
  *
  * @return  number  window size (rounded)
  */
-const roundWindowSize = (windowSize: number, overlap: number) => {
-  const overlapFactor = 1 / (1 - overlap);
+const roundOverlapAndWindowSize = (
+  windowSize: number,
+  overlap: number
+): [number, number, number] => {
+  const overlapFactor = Math.round(1 / (1 - overlap));
   //Rounds down the window size to an even number
-  return Math.floor(overlapFactor * Math.floor(windowSize / overlapFactor));
+  const roundedWindowSize =
+    overlapFactor * Math.floor(windowSize / overlapFactor);
+  const roundedOverlap = 1 / (1 - overlapFactor);
+  return [roundedOverlap, roundedWindowSize, overlapFactor];
 };
 
 /**
@@ -217,7 +223,7 @@ const spectrogram = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName = "hann"
 ) => {
-  windowSize = roundWindowSize(windowSize, overlap);
+  [windowSize, overlap] = roundOverlapAndWindowSize(windowSize, overlap);
   const psdWindows = calculatePSDWindows(
     inputData,
     sampleRate,
