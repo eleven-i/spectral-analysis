@@ -86,7 +86,9 @@ const calculateWindows = (
   const wf = findWindowFunction(windowingFunction);
   const overlapFactor = 1 / (1 - overlap);
   //Rounds down the window size to an even number
-  windowSize = overlapFactor * Math.floor(windowSize / overlapFactor);
+  windowSize = Math.floor(
+    overlapFactor * Math.floor(windowSize / overlapFactor)
+  );
   const dataLength = inputData.length;
   if (windowSize > dataLength) {
     throw new Error("Window size must be smaller than data size");
@@ -199,7 +201,7 @@ const welch = (
 const roundWindowSize = (windowSize: number, overlap: number) => {
   const overlapFactor = 1 / (1 - overlap);
   //Rounds down the window size to an even number
-  return overlapFactor * Math.floor(windowSize / overlapFactor);
+  return Math.floor(overlapFactor * Math.floor(windowSize / overlapFactor));
 };
 
 /**
