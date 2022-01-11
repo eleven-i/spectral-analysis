@@ -114,7 +114,7 @@ const calculatePSDWindows = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName
 ) => {
-  [windowSize, overlap] = roundOverlapAndWindowSize(windowSize, overlap);
+  [overlap, windowSize] = roundOverlapAndWindowSize(windowSize, overlap);
   const windows = calculateWindows(
     inputData,
     windowSize,
@@ -146,7 +146,7 @@ const calculateFFT = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName = "hann"
 ) => {
-  [windowSize, overlap] = roundOverlapAndWindowSize(windowSize, overlap);
+  [overlap, windowSize] = roundOverlapAndWindowSize(windowSize, overlap);
   const windows = calculateWindows(
     inputData,
     windowSize,
@@ -176,7 +176,7 @@ const welch = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName = "hann"
 ) => {
-  [windowSize, overlap] = roundOverlapAndWindowSize(windowSize, overlap);
+  [overlap, windowSize] = roundOverlapAndWindowSize(windowSize, overlap);
   const psdWindows = calculatePSDWindows(
     inputData,
     sampleRate,
@@ -223,7 +223,7 @@ const spectrogram = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName = "hann"
 ) => {
-  [windowSize, overlap] = roundOverlapAndWindowSize(windowSize, overlap);
+  [overlap, windowSize] = roundOverlapAndWindowSize(windowSize, overlap);
   const psdWindows = calculatePSDWindows(
     inputData,
     sampleRate,
