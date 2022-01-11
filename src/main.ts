@@ -86,8 +86,8 @@ const calculateWindows = (
   const wf = findWindowFunction(windowingFunction);
   let overlapFactor = 1 / (1 - overlap);
   [overlap, windowSize, overlapFactor] = roundOverlapAndWindowSize(
-    overlap,
-    windowSize
+    windowSize,
+    overlap
   );
   const dataLength = inputData.length;
   if (windowSize > dataLength) {
@@ -205,7 +205,7 @@ const roundOverlapAndWindowSize = (
   const overlapFactor = Math.round(1 / (1 - overlap));
   //Rounds down the window size to an even number
   const roundedWindowSize =
-    overlapFactor * Math.floor(windowSize / overlapFactor);
+    overlapFactor * 2 * Math.floor(windowSize / (overlapFactor * 2));
   const roundedOverlap = 1 / (1 - overlapFactor);
   return [roundedOverlap, roundedWindowSize, overlapFactor];
 };
