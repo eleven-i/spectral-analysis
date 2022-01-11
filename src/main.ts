@@ -112,6 +112,7 @@ const calculatePSDWindows = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName
 ) => {
+  windowSize = roundWindowSize(windowSize, overlap);
   const windows = calculateWindows(
     inputData,
     windowSize,
@@ -143,6 +144,7 @@ const calculateFFT = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName = "hann"
 ) => {
+  windowSize = roundWindowSize(windowSize, overlap);
   const windows = calculateWindows(
     inputData,
     windowSize,
@@ -179,6 +181,7 @@ const welch = (
     overlap,
     windowingFunction
   );
+  windowSize = roundWindowSize(windowSize, overlap);
   //Combine windows
   const psd = psdWindows.reduce(
     (total, current) => current.map((item, i) => total[i] + item),
@@ -186,6 +189,17 @@ const welch = (
   );
   const fftfreq = calculateFFTFreq(windowSize, sampleRate);
   return [fftfreq, psd];
+};
+
+/**
+ * Calcuate window size (rounded)
+ *
+ * @return  number  window size (rounded)
+ */
+const roundWindowSize = (windowSize: number, overlap: number) => {
+  const overlapFactor = 1 / (1 - overlap);
+  //Rounds down the window size to an even number
+  return overlapFactor * Math.floor(windowSize / overlapFactor);
 };
 
 /**
@@ -201,6 +215,7 @@ const spectrogram = (
   overlap = 0.5,
   windowingFunction: WindowFunctionName = "hann"
 ) => {
+  windowSize = roundWindowSize(windowSize, overlap);
   const psdWindows = calculatePSDWindows(
     inputData,
     sampleRate,
