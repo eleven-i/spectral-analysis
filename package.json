@@ -1,6 +1,6 @@
 {
   "name": "spectral-analysis",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "TypeScript library spectral analysis such as PSD and FFT",
   "main": "dist/main",
   "repository": "git@github.com:eleven-i/spectral-analysis.git",
